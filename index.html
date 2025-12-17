@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>- TimeCollection | BoletoCounty -</title>
+    <title>حاسبة جمع الوقت</title>
 
     <style>
         body {
@@ -29,7 +29,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* اللوقو أعلى الصفحة */
         .header {
             margin-top: 30px;
             margin-bottom: 20px;
@@ -92,17 +91,22 @@
             font-weight: bold;
             color: #4a3c8a;
         }
+
+        /* النص الصغير أسفل الصفحة */
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
     </style>
 </head>
 
 <body>
 
-<!-- اللوقو (كما هو) -->
 <div class="header">
     <img src="logo boleto O.png" alt="BOLETO Logo">
 </div>
 
-<!-- الصندوق -->
 <div class="box">
     <h2>جمع الوقت</h2>
 
@@ -118,6 +122,11 @@
     <button onclick="calculateTime()">احسب</button>
 
     <div class="result" id="result"></div>
+</div>
+
+<!-- النص الصغير -->
+<div class="footer">
+    تحت مسؤولية مـشـرف عـام
 </div>
 
 <script>
@@ -153,4 +162,3 @@ function calculateTime() {
 
 </body>
 </html>
-
