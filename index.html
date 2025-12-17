@@ -3,61 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>حاسبة جمع الوقت</title>
+
     <style>
         body {
             font-family: Tahoma, Arial;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #6b3fa0,
+                #8b5fcf,
+                #4a3c8a
+            );
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
             direction: rtl;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* اللوقو أعلى الصفحة */
+        .header {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 260px;
         }
 
         .box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px;
+            border-radius: 18px;
+            width: 320px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(10px);
+            text-align: center;
         }
 
         h2 {
-            text-align: center;
             margin-bottom: 15px;
+            color: #4a3c8a;
         }
 
         label {
             display: block;
-            margin-top: 10px;
+            margin-top: 12px;
+            text-align: right;
+            font-weight: bold;
         }
 
         input {
             width: 100%;
-            padding: 6px;
+            padding: 8px;
             margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
         }
 
         button {
             width: 100%;
-            margin-top: 15px;
-            padding: 8px;
-            background: #007bff;
+            margin-top: 18px;
+            padding: 10px;
+            background: linear-gradient(135deg, #6b3fa0, #8b5fcf);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            opacity: 0.9;
         }
 
         .result {
-            margin-top: 15px;
-            text-align: center;
+            margin-top: 18px;
+            font-size: 16px;
             font-weight: bold;
+            color: #4a3c8a;
         }
     </style>
 </head>
+
 <body>
 
+<!-- اللوقو (كما هو) -->
+<div class="header">
+    <img src="logo boleto O.png" alt="BOLETO Logo">
+</div>
+
+<!-- الصندوق -->
 <div class="box">
     <h2>جمع الوقت</h2>
 
@@ -93,7 +138,6 @@ function calculateTime() {
     minutes = minutes % 60;
     hours = hours % 24;
 
-    // تحويل إلى توقيت 12 ساعة
     let period = hours >= 12 ? "م" : "ص";
     let displayHours = hours % 12;
     displayHours = displayHours === 0 ? 12 : displayHours;
