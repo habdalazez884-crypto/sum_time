@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>حاسبة جمع الوقت</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            direction: rtl;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 8px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>جمع الوقت</h2>
+
+    <label>الوقت الحالي:</label>
+    <input type="time" id="currentTime">
+
+    <label>ساعات للإضافة:</label>
+    <input type="number" id="addHours" value="0">
+
+    <label>دقائق للإضافة:</label>
+    <input type="number" id="addMinutes" value="0">
+
+    <button onclick="calculateTime()">احسب</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateTime() {
+    const time = document.getElementById("currentTime").value;
+    const addHours = parseInt(document.getElementById("addHours").value) || 0;
+    const addMinutes = parseInt(document.getElementById("addMinutes").value) || 0;
+
+    if (!time) {
+        alert("الرجاء إدخال الوقت الحالي");
+        return;
+    }
+
+    let [hours, minutes] = time.split(":").map(Number);
+
+    minutes += addMinutes;
+    hours += addHours + Math.floor(minutes / 60);
+    minutes = minutes % 60;
+    hours = hours % 24;
+
+    // تحويل إلى توقيت 12 ساعة
+    let period = hours >= 12 ? "م" : "ص";
+    let displayHours = hours % 12;
+    displayHours = displayHours === 0 ? 12 : displayHours;
+
+    const resultTime =
+        displayHours + ":" +
+        String(minutes).padStart(2, "0") + " " + period;
+
+    document.getElementById("result").innerText =
+        "الوقت بعد الجمع: " + resultTime;
+}
+</script>
+
+</body>
+</html>
